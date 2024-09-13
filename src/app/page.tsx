@@ -13,7 +13,7 @@ export default function Home() {
         </p>
        </aside>
        <div className="sm:w-3/4">
-        <div className="flex flex-row flex-grow flex-wrap p-8 pb-20 gap-4 items-center justify-normal sm:p-10 font-[family-name:var(--font-geist-sans)] bg-purple-700">
+        <div className="flex flex-row flex-grow flex-wrap p-8 pb-20 gap-4 items-center justify-normal sm:p-10 font-[family-name:var(--font-geist-sans)]">
               <GridBox />
               <GridBox />
               <GridBox />
