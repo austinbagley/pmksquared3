@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function GridBox() {
   return (
     
-    <div className="flex-auto flex flex-col gap-4 items-center sm:items-start p-4">
+    <div className="flex-auto flex flex-col gap-4 items-center sm:items-start p-4 rounded-xl shadow-xl">
           <h3 className="text-2xl text-blue-800 font-semibold ">
             This is a title.
           </h3>
