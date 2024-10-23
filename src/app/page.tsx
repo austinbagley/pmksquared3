@@ -1,7 +1,10 @@
+"use client";
+
 import Footer from "@/app/components/Footer"
 import Header from "@/app/components/Header"
 import GridBox from "@/app/components/GridBox"
 import Image from "next/image"
+import { AnimatedDiv } from "@/app/components/AnimatedDiv"
 
 export default function Home() {
   return (
@@ -55,14 +58,13 @@ export default function Home() {
               
             
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-8 pb-20">
+          <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-8 pb-20">
               <GridBox title="ROI Calculator" image="/images/factory.webp" description="lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <GridBox />
               <GridBox />
-              <GridBox />
-              
+              <GridBox />              
             
-          </div>
+          </AnimatedDiv>
        </div>
       </main>         
       <Footer />
