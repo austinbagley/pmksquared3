@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/app/components/Footer"
-import Header from "@/app/components/Header"
 import GridBox from "@/app/components/GridBox"
 import Image from "next/image"
 import { AnimatedDiv } from "@/app/components/AnimatedDiv"
@@ -12,7 +10,7 @@ export default function Home() {
       <main className="md:container mx-auto bg-white shadow-2xl rounded-xl">
         <div className="flex sm:flex-row">
           <div className="flex flex-col sm:w-1/5" >
-            <div className=" text-blue-950 font-bold text-lg">
+            <div className=" text-prussian-blue font-thin text-lg">
               <h3 className="p-8">Categories</h3>
             </div>
             <div className="">
@@ -27,10 +25,10 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col sm:w-4/5 p-8" >
-            <div className=" text-blue-950 font-bold text-lg mb-5">
+            <div className=" text-prussian-blue font-thin text-lg mb-5">
               <h3>The Latest</h3>
             </div>
-            <div className="relative flex flex-col-reverse rounded-xl w-full h-96 p-8 overflow-hidden">
+            <div className="relative flex flex-col-reverse rounded-xl w-full h-96 p-6 overflow-hidden">
               <Image
                 src="/images/prompt-engineering-for-marketers2.webp"
                 alt="Background image"
@@ -38,15 +36,17 @@ export default function Home() {
                 className="rounded-xl object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent animate-fadein"></div>
-              <h2 className="relative z-10 text-white font-bold text-6xl animate-fadeinleft">Prompt engineering for product marketers </h2>
-              <p className="relative z-10 text-white font-bold text-xl animate-fadeinleft"> October 24, 2024 </p>
+              <div>
+                <h2 className="relative z-10 text-white font-bold text-6xl animate-fadeinleft">Prompt engineering for product marketers </h2>
+                <p className="relative z-10 text-cardinal-red font-bold text-xl animate-fadeinleft mt-4"> October 24, 2024 </p>
+              </div>
             </div>
            
           </div>
         </div>
         <div className="">
           <div className="px-8 pb-4">
-            <h3 className=" text-blue-950 font-bold text-lg">Top Resources</h3>
+            <h3 className=" text-prussian-blue font-thin text-lg">Top Resources</h3>
             
           </div>  
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-8 pb-20">
@@ -57,7 +57,7 @@ export default function Home() {
             
           </div>
           <div className="px-8 pb-4">
-            <h3 className=" text-blue-950 font-bold text-lg">Blog</h3>
+            <h3 className=" text-blue-950 font-thin text-lg">Blog</h3>
             
           </div>  
           <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-8 pb-20">

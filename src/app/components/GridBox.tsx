@@ -21,7 +21,7 @@ export default function GridBox({
           className="rounded-lg object-cover"
         />
       </div>
-      <h3 className="text-2xl text-blue-800 font-semibold">
+      <h3 className="text-2xl text-space-cadet font-semibold">
         {title}
       </h3>
       <div className="text-sm text-center sm:text-left">

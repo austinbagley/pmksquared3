@@ -12,6 +12,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "oxford-blue": "#031d44",
+        "cardinal-red": "#cd133b",
+        "prussian-blue": "#04395e",
+        "space-cadet": "#2a324b",
+        "slate-gray": "#767b91",
+        "french-gray": "#c7ccdb",
+        "alice-blue": "#e1e5ee",
       },
       fontFamily: {
         sans: ['var(--font-roboto)', ...fontFamily.sans],
