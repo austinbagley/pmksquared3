@@ -9,7 +9,6 @@ import { AnimatedDiv } from "@/app/components/AnimatedDiv"
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="md:container mx-auto bg-white shadow-2xl rounded-xl">
         <div className="flex sm:flex-row">
           <div className="flex flex-col sm:w-1/5" >
@@ -35,9 +34,8 @@ export default function Home() {
               <Image
                 src="/images/prompt-engineering-for-marketers2.webp"
                 alt="Background image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-xl"
+                fill
+                className="rounded-xl object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent animate-fadein"></div>
               <h2 className="relative z-10 text-white font-bold text-6xl animate-fadeinleft">Prompt engineering for product marketers </h2>
@@ -58,6 +56,10 @@ export default function Home() {
               
             
           </div>
+          <div className="px-8 pb-4">
+            <h3 className=" text-blue-950 font-bold text-lg">Blog</h3>
+            
+          </div>  
           <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-8 pb-20">
               <GridBox title="ROI Calculator" image="/images/factory.webp" description="lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <GridBox />
@@ -65,9 +67,13 @@ export default function Home() {
               <GridBox />              
             
           </AnimatedDiv>
+          <div className="px-8 pb-4">
+            <p>See all</p>
+            
+          </div>  
        </div>
       </main>         
-      <Footer />
+  
     </>
       );
 }

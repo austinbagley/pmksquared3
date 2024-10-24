@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
+import Header from "@/app/components/Header"
+import Footer from "@/app/components/Footer"
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} antialiased scroll-smooth`}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

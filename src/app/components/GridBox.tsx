@@ -17,9 +17,8 @@ export default function GridBox({
         <Image
           src={image}
           alt={`Image for ${title}`}
-          layout="fill"
-          objectFit="cover"
-          className="rounded-lg"
+          fill
+          className="rounded-lg object-cover"
         />
       </div>
       <h3 className="text-2xl text-blue-800 font-semibold">
