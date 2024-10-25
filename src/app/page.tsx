@@ -3,11 +3,16 @@
 import GridBox from "@/app/components/GridBox"
 import Image from "next/image"
 import { AnimatedDiv } from "@/app/components/AnimatedDiv"
+import { allPosts } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
+import PostCard from "@/app/components/Postcard"
 
 export default function Home() {
+  const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
+
+
   return (
     <>
-      <main className="md:container mx-auto bg-white shadow-2xl rounded-xl">
         <div className="flex sm:flex-row">
           <div className="flex flex-col sm:w-1/5" >
             <div className=" text-prussian-blue font-thin text-lg">
@@ -71,9 +76,13 @@ export default function Home() {
             <p>See all</p>
             
           </div>  
+          <div className="mx-auto max-w-xl py-8">
+            <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
+              {posts.map((post, idx) => (
+              <PostCard key={idx} {...post} />
+              ))}
+          </div>
        </div>
-      </main>         
-  
     </>
       );
 }

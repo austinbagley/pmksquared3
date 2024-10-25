@@ -25,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} antialiased scroll-smooth`}>
         <Header />
-        {children}
+        <main className="md:container mx-auto bg-white shadow-2xl rounded-xl">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
