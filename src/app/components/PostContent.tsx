@@ -10,12 +10,12 @@ interface PostContentProps {
 
 export function PostContent({ html, headings }: PostContentProps) {
   return (
-    <div className='flex bg-red-500'>
+    <div className='flex space-x-20'>
       <div 
-        className="[&>*]:mb-3 [&>*:last-child]:mb-0 flex-initial " 
+        className="flex flex-col w-2/3 [&>*]:mb-3 [&>*:last-child]:mb-0 " 
         dangerouslySetInnerHTML={{ __html: html }} 
       />
-      <div className='flex-initial bg-blue-500'>
+      <div className='flex flex-col w-1/3 '>
         <PageNavigation headings={headings} />
       </div>
     </div>
