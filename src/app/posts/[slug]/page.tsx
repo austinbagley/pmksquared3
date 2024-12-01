@@ -19,28 +19,33 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   return { title: post.title }
 }
 
-const mdxComponents = {
-  Callout,
-  Image,
-  Link,
-  ChevronLink,
-  Label,
-  h2: H2,
-  h3: H3,
-  h4: H4,
-  a: Link,
-}
+// const mdxComponents = {
+//   Callout,
+//   Image,
+//   Link,
+//   ChevronLink,
+//   Label,
+//   h2: H2,
+//   h3: H3,
+//   h4: H4,
+//   a: Link,
+// }
 
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
 
+  console.log('Post data:', {
+    html: post.body.html.slice(0, 200) + '...', // Just show the start
+    headings: post.headings,
+    slug: params.slug
+  })
+
   return (
     <>
       <PostContent html={post.body.html} headings={post.headings} />
     </>
-   
   )
 }
 export default PostLayout
