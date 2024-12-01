@@ -74,7 +74,7 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
   if (headingsToRender.length === 0) return null
 
   return (
-    <nav className="text-sm" aria-label="Table of contents">
+    <nav className="text-sm fixed" aria-label="Table of contents">
       <h4 className="mb-4 font-medium text-slate-600 dark:text-slate-300">
         On this page
       </h4>

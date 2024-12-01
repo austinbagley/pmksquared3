@@ -50,8 +50,10 @@ export function PostContent({ html, headings }: PostContentProps) {
         className="flex flex-col w-2/3 [&>*]:mb-3 [&>*:last-child]:mb-0 " 
         dangerouslySetInnerHTML={{ __html: html }} 
       />
-      <div className='flex flex-col w-1/3 '>
-        <PageNavigation headings={headings} />
+      <div className='flex flex-col w-1/3 overflow-hidden'>
+        
+          <PageNavigation headings={headings} />
+        
       </div>
     </div>
   )
