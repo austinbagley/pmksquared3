@@ -4,6 +4,7 @@ import Header from "@/app/components/Header"
 import Footer from "@/app/components/Footer"
 import "./globals.css";
 
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["700","400"],
@@ -33,3 +34,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+
