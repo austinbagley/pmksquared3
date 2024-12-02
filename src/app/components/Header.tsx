@@ -46,12 +46,12 @@ export default function Header({ className = '' }: HeaderProps) {
           z-50
           transition-all duration-300 ease-in-out
           ${isSticky 
-            ? 'bg-white/95 backdrop-blur-sm shadow-lg py-2' 
+            ? 'bg-white/95 backdrop-blur-lg py-2' 
             : 'bg-transparent py-4'}
           ${className}
         `}
       >
-        <div className="container mx-auto px-4">
+        <div className="md:container mx-auto px-6">
           <nav className="flex items-center justify-between">
             <Link 
               href="/" 
@@ -103,7 +103,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
       {/* Mobile menu overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-white md:hidden">
+        <div className="fixed inset-0 z-40 bg-background md:hidden">
           <div className="p-4 space-y-4">
             <div className="flex justify-end">
               <button
