@@ -48,7 +48,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <PostContent html={post.body.html} title={post.title} author={post.author} headings={post.headings} />
+      <PostContent post={post} />
     </>
   )
 }
