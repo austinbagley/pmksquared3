@@ -11,22 +11,17 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
 
   useEffect(() => {
     // Wait a bit for DOM to be ready
-    const timer = setTimeout(() => {
-      console.log('Setting up observer...')
-      
+    const timer = setTimeout(() => {      
       if (observerRef.current) {
         observerRef.current.disconnect()
       }
 
       observerRef.current = new IntersectionObserver(
         (entries) => {
-          console.log('Observer callback triggered', entries)
           const visibleEntries = entries.filter(entry => entry.isIntersecting)
-          console.log('Visible entries:', visibleEntries.map(e => e.target.id))
           
           if (visibleEntries.length > 0) {
             const firstVisibleHeading = visibleEntries[0]
-            console.log('Setting active heading to:', firstVisibleHeading.target.id)
             setActiveHeading(firstVisibleHeading.target.id)
           }
         },
@@ -38,26 +33,16 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
       )
 
       const headingsToObserve = headings.filter(h => h.level > 1)
-      console.log('Looking for these headings:', 
-        headingsToObserve.map(h => sluggifyTitle(getNodeText(h.title)))
-      )
-
+    
       headingsToObserve.forEach(heading => {
         const slug = sluggifyTitle(getNodeText(heading.title))
         const element = document.getElementById(slug)
         if (element) {
-          console.log('Found and observing element:', slug)
           observerRef.current?.observe(element)
         } else {
           console.warn('Could not find element with id:', slug)
         }
       })
-
-      // Log all IDs in the document to help debug
-      const allIds = Array.from(document.getElementsByTagName('*'))
-        .filter(el => el.id)
-        .map(el => el.id)
-      console.log('All IDs in document:', allIds)
 
     }, 100) // Small delay to ensure DOM is ready
 
@@ -91,7 +76,6 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
               }`}
               onClick={() => {
                 // Add click handler to help debug
-                console.log('Clicked heading:', slug)
                 setActiveHeading(slug)
               }}
               aria-current={slug === activeHeading ? 'location' : undefined}

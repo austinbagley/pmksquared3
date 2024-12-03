@@ -40,13 +40,15 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   console.log('Post data:', {
     html: post.body.html.slice(0, 200) + '...', // Just show the start
+    title: post.title,
+    author: post.author,
     headings: post.headings,
     slug: params.slug
   })
 
   return (
     <>
-      <PostContent html={post.body.html} headings={post.headings} />
+      <PostContent html={post.body.html} title={post.title} author={post.author} headings={post.headings} />
     </>
   )
 }
