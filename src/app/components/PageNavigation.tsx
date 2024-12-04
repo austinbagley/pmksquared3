@@ -33,15 +33,19 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
 
     const headingsToObserve = headings.filter(h => h.level > 1)
   
-    headingsToObserve.forEach(heading => {
-      const slug = sluggifyTitle(getNodeText(heading.title))
-      const element = document.getElementById(slug)
-      if (element) {
-        observerRef.current?.observe(element)
-      } else {
-        console.warn('Could not find element with id:', slug)
-      }
-    })
+    
+    setTimeout(() => {
+      headingsToObserve.forEach(heading => {
+        const slug = sluggifyTitle(getNodeText(heading.title))
+        console.log(slug);
+        const element = document.getElementById(slug)
+        if (element) {
+          observerRef.current?.observe(element)
+        } else {
+          console.warn('Could not find element with id:', slug)
+        }
+      })
+    }, 100) // 1000ms = 1 second timeout
 
 
     return () => {
