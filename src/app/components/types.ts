@@ -1,4 +1,4 @@
 export type DocHeading = {
   level: number,
-  title: string
+  title: React.ReactNode
 }

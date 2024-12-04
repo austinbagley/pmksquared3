@@ -81,14 +81,14 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
                   <Icon name="chevron-right" />
                 </span>
                 <a href={`#${slug}`}>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: title.replace(
-                        /`(.*?)`/g, 
-                        '<code style="font-size: 0.75rem;">$1</code>'
-                      ),
-                    }}
-                  />
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: getNodeText(title).replace(
+                      /`(.*?)`/g, 
+                      '<code style="font-size: 0.75rem;">$1</code>'
+                    ),
+                  }}
+                />
                 </a>
              
             </li>
