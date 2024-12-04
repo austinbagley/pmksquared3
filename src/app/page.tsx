@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-        <div className="flex sm:flex-row">
+        <div className="flex sm:flex-ro pt-6">
           <div className="flex flex-col sm:w-1/5" >
             <div className=" text-prussian-blue font-thin text-lg">
               <h3 className="p-8">Categories</h3>

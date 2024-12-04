@@ -10,44 +10,41 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
   const observerRef = useRef<IntersectionObserver | null>(null)
 
   useEffect(() => {
-    // Wait a bit for DOM to be ready
-    const timer = setTimeout(() => {      
-      if (observerRef.current) {
-        observerRef.current.disconnect()
+       
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+    }
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter(entry => entry.isIntersecting)
+        
+        if (visibleEntries.length > 0) {
+          const firstVisibleHeading = visibleEntries[0]
+          setActiveHeading(firstVisibleHeading.target.id)
+        }
+      },
+      {
+        // More lenient observer options
+        rootMargin: '-10% 0px -70% 0px',
+        threshold: [0, 0.1, 0.5, 1]
       }
+    )
 
-      observerRef.current = new IntersectionObserver(
-        (entries) => {
-          const visibleEntries = entries.filter(entry => entry.isIntersecting)
-          
-          if (visibleEntries.length > 0) {
-            const firstVisibleHeading = visibleEntries[0]
-            setActiveHeading(firstVisibleHeading.target.id)
-          }
-        },
-        {
-          // More lenient observer options
-          rootMargin: '-10% 0px -70% 0px',
-          threshold: [0, 0.1, 0.5, 1]
-        }
-      )
+    const headingsToObserve = headings.filter(h => h.level > 1)
+  
+    headingsToObserve.forEach(heading => {
+      const slug = sluggifyTitle(getNodeText(heading.title))
+      const element = document.getElementById(slug)
+      if (element) {
+        observerRef.current?.observe(element)
+      } else {
+        console.warn('Could not find element with id:', slug)
+      }
+    })
 
-      const headingsToObserve = headings.filter(h => h.level > 1)
-    
-      headingsToObserve.forEach(heading => {
-        const slug = sluggifyTitle(getNodeText(heading.title))
-        const element = document.getElementById(slug)
-        if (element) {
-          observerRef.current?.observe(element)
-        } else {
-          console.warn('Could not find element with id:', slug)
-        }
-      })
-
-    }, 100) // Small delay to ensure DOM is ready
 
     return () => {
-      clearTimeout(timer)
       if (observerRef.current) {
         observerRef.current.disconnect()
       }

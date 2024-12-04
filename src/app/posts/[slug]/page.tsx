@@ -30,22 +30,12 @@ const mdxComponents = {
   a: Link,
 }
 
-
-
 const PostLayout = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug)
   if (!post) throw new Error(`Post not found for slug: ${params.slug}`)
 
   console.log(mdxComponents);
-
-  console.log('Post data:', {
-    html: post.body.html.slice(0, 200) + '...', // Just show the start
-    title: post.title,
-    author: post.author,
-    headings: post.headings,
-    slug: params.slug
-  })
-
+  
   return (
     <>
       <PostContent post={post} />

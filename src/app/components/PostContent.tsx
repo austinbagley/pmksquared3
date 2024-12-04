@@ -25,6 +25,7 @@ export function PostContent({ post }: PostContentProps) {
         const headingText = element.textContent || ''
         const slug = sluggifyTitle(headingText)
         element.id = slug
+        element.className = "scroll-mt-[80px] font-semibold"
       })
     }
   }, [post.body.html, post.title, post.author, post.headings])
@@ -41,7 +42,7 @@ export function PostContent({ post }: PostContentProps) {
           dangerouslySetInnerHTML={{ __html: post.body.html }} 
         />  
       </div>
-      <div className='flex flex-col w-1/5 pt-4'>
+      <div className='flex flex-col w-1/5 p-4 border-l'>
           <PageNavigation headings={post.headings} />
       </div>
     </div>
