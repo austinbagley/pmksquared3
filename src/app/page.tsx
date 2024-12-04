@@ -5,7 +5,6 @@ import Image from "next/image"
 import { AnimatedDiv } from "@/app/components/AnimatedDiv"
 import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
-import PostCard from "@/app/components/Postcard"
 
 export default function Home() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
@@ -55,9 +54,9 @@ export default function Home() {
             
           </div>  
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-8 pb-20">
-              <GridBox title="ROI Calculator" image="/images/factory.webp" description="lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+              {/* <GridBox title="ROI Calculator" image="/images/factory.webp" description="lorem ipsum dolor sit amet, consectetur adipiscing elit." />
               <GridBox />
-              <GridBox />
+              <GridBox /> */}
               
             
           </div>
@@ -66,22 +65,18 @@ export default function Home() {
             
           </div>  
           <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 px-8 pb-20">
-              <GridBox title="ROI Calculator" image="/images/factory.webp" description="lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-              <GridBox />
-              <GridBox />
-              <GridBox />              
+              {posts.map((post, idx) => (
+                <GridBox key={idx} {...post} />
+              ))}
+
+                      
             
           </AnimatedDiv>
           <div className="px-8 pb-4">
             <p>See all</p>
             
           </div>  
-          <div className="mx-auto max-w-xl py-8">
-            <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
-              {posts.map((post, idx) => (
-              <PostCard key={idx} {...post} />
-              ))}
-          </div>
+         
        </div>
     </>
       );
