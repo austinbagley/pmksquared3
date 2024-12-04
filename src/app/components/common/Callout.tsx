@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import {  ReactNode } from 'react'
 import { Icon } from './Icon'
 
 export const Callout: React.FC<{ children: ReactNode; className?: string | '' }> = ({ children, className }) => {
