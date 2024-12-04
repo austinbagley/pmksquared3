@@ -13,7 +13,7 @@ interface PostContentProps {
 
 export function PostContent({ post }: PostContentProps) {
   const contentRef = useRef<HTMLDivElement>(null)
-  const postDate = format(post.date, "MMM dd, yyyy")
+  const postDate = format(post.date, "LLLL dd, yyyy")
 
   useEffect(() => {
   
@@ -33,9 +33,9 @@ export function PostContent({ post }: PostContentProps) {
   return (
     <div className='flex space-x-20'>
       <div className="flex flex-col w-4/5">
-        <span className="text-gray-600 pt-4">breadcrumbs go here.</span>
-        <h1 className="text-4xl font-semibold text-blue-600 py-2">{post.title}</h1>
-        <h3 className="text-lg pb-8">{post.author} | {postDate} </h3>
+        <span className="text-gray-700 text-sm pt-4">BREADCRUMBS GO HERE</span>
+        <h1 className="text-6xl font-semibold text-blue-600 py-2">{post.title}</h1>
+        <h3 className="text-sm text-gray-700 pb-8">{post.author.toUpperCase()} - {postDate.toUpperCase()} </h3>
         <div 
           ref={contentRef}
           className="[&>*]:mb-3 [&>*:last-child]:mb-0" 

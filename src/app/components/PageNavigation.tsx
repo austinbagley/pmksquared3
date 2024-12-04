@@ -58,7 +58,7 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
   return (
     <nav className="text-sm fixed" aria-label="Table of contents">
       <h4 className="mb-4 font-medium text-slate-600 dark:text-slate-300">
-        On this page
+        ON THIS PAGE
       </h4>
       <ul className="space-y-2">
         {headingsToRender.map(({ title, level }, index) => {
