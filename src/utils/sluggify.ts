@@ -11,7 +11,7 @@ export const getNodeText = (node: React.ReactNode): string => {
   if (typeof node === 'number') return node.toString()
   if (node instanceof Array) return node.map(getNodeText).join('')
 
-  if (typeof node === 'object' && (node as any)?.props?.children) return getNodeText((node as any).props.children)
+  if (typeof node === 'object' && (node as React.ReactElement)?.props?.children) return getNodeText((node as React.ReactElement).props.children)
 
   // console.log(node)
   // console.error(`Should be never reached`)
