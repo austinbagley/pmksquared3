@@ -37,7 +37,7 @@ export const PageNavigation: FC<{ headings: DocHeading[] }> = ({ headings }) => 
     setTimeout(() => {
       headingsToObserve.forEach(heading => {
         const slug = sluggifyTitle(getNodeText(heading.title))
-        console.log(slug);
+        //console.log(slug);
         const element = document.getElementById(slug)
         if (element) {
           observerRef.current?.observe(element)
