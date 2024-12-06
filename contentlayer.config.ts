@@ -12,7 +12,8 @@ import { bundleMDX } from 'mdx-bundler'
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
-  filePathPattern: `**/*.md`,
+  filePathPattern: `**/*.mdx`,
+  contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },

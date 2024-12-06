@@ -1,34 +1,27 @@
-'use client'
 import { PageNavigation } from './PageNavigation'
-// import { type DocHeading } from '../components/types'
-import { sluggifyTitle } from '../../utils/sluggify'
-import { useEffect, useRef } from 'react'
+import { sluggifyTitle, getNodeText } from '../../utils/sluggify'
+import type { MDXComponents } from 'mdx/types'
 import { Post } from 'contentlayer/generated'
 import { format } from 'date-fns'
-
+import { useMDXComponent } from 'next-contentlayer2/hooks'
+import Link from 'next/link'
+import React from 'react'
 
 interface PostContentProps {
   post: Post;
 }
 
-export function PostContent({ post }: PostContentProps) {
-  const contentRef = useRef<HTMLDivElement>(null)
-  const postDate = format(post.date, "LLLL dd, yyyy")
+const mdxComponents: MDXComponents = {
+  // Override the default <a> element to use the next/link component.
+  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+  h2: ({ children }) => <h2 id={sluggifyTitle(getNodeText(children))} className="text-xl mb-2 mt-4">{children}</h2>,
+  h3: ({ children }) => <h3 id={sluggifyTitle(getNodeText(children))} className="text-lg mb-1 mt-3">{children}</h3>,
+  h4: ({ children }) => <h4 id={sluggifyTitle(getNodeText(children))} className="text-md mb-1 mt-1">{children}</h4>
+}
 
-  useEffect(() => {
-  
-    if (contentRef.current) {
-      const headingElements = contentRef.current.querySelectorAll('h1, h2, h3, h4, h5, h6')
-      
-      // Add IDs to headings
-      headingElements.forEach((element) => {
-        const headingText = element.textContent || ''
-        const slug = sluggifyTitle(headingText)
-        element.id = slug
-        element.className = "scroll-mt-[80px] font-semibold"
-      })
-    }
-  }, [post.body.html, post.title, post.author, post.headings])
+export function PostContent({ post }: PostContentProps) {
+  const postDate = format(post.date, "LLLL dd, yyyy")
+  const MDXContent = useMDXComponent(post.body.code)
 
   return (
     <div className='flex space-x-20'>
@@ -36,14 +29,12 @@ export function PostContent({ post }: PostContentProps) {
         <span className="text-gray-700 text-sm pt-4">BREADCRUMBS GO HERE</span>
         <h1 className="text-6xl font-semibold text-blue-600 py-2">{post.title}</h1>
         <h3 className="text-sm text-gray-700 pb-8">{post.author.toUpperCase()} - {postDate.toUpperCase()} </h3>
-        <div 
-          ref={contentRef}
-          className="[&>*]:mb-3 [&>*:last-child]:mb-0" 
-          dangerouslySetInnerHTML={{ __html: post.body.html }} 
-        />  
+        <article className="mb-3">
+         <MDXContent components={mdxComponents} />
+        </article>
       </div>
       <div className='flex flex-col w-1/5 p-4 border-l'>
-          <PageNavigation headings={post.headings} />
+        <PageNavigation headings={post.headings} />
       </div>
     </div>
   )
