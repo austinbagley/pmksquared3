@@ -6,7 +6,6 @@ const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   reactStrictMode: true,
-  swcMinify: true,
   webpack: (config) => {
     // Modify the webpack config to ignore specific warnings
     config.infrastructureLogging = {
