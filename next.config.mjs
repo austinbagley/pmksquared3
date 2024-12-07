@@ -7,7 +7,22 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   reactStrictMode: true,
   swcMinify: true,
-  // Optionally, add any other Next.js config below
+  webpack: (config) => {
+    // Modify the webpack config to ignore specific warnings
+    config.infrastructureLogging = {
+      level: 'error', // This will show only errors, not warnings
+    }
+
+    // If you want to be more specific, you can filter out just the contentlayer warnings
+    config.stats = {
+      ...config.stats,
+      warningsFilter: [
+        /\[webpack\.cache\.PackFileCacheStrategy\/webpack\.FileSystemInfo\]/,
+      ],
+    }
+
+    return config
+  },
 }
  
 const withMDX = createMDX({
