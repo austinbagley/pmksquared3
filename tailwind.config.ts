@@ -19,6 +19,7 @@ const config: Config = {
         "slate-gray": "#767b91",
         "french-gray": "#c7ccdb",
         "alice-blue": "#e1e5ee",
+        "tailwind-blue": "0B1120"
       },
       fontFamily: {
         sans: ['var(--font-roboto)', ...fontFamily.sans],

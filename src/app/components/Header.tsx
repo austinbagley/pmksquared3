@@ -11,6 +11,7 @@ interface HeaderProps {
 export default function Header({ className = '' }: HeaderProps) {
   const [isSticky, setIsSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const proportionFactor: number = 0.5
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,8 +62,8 @@ export default function Header({ className = '' }: HeaderProps) {
               <Image
                 src="/images/pmk-squared-mark.png"
                 alt={``}
-                width={165 * 0.7}
-                height={80 * 0.7}
+                width={165 * proportionFactor}
+                height={80 * proportionFactor}
               />
             </Link>
             
